@@ -26,6 +26,7 @@
       system = "x86_64-linux";
       modules = [
         ./configurations/base.nix
+        ./configurations/common.nix
         ./configurations/nixos-1.nix
       ];
     };
@@ -34,6 +35,7 @@
       system = "x86_64-linux";
       modules = [
         ./configurations/base.nix
+        ./configurations/common.nix
         ./configurations/nixos-2.nix
       ];
     };
@@ -42,6 +44,7 @@
       system = "x86_64-linux";
       modules = [
         ./configurations/base.nix
+        ./configurations/common.nix
         ./configurations/nixos-3.nix
       ];
     };

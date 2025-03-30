@@ -4,3 +4,4 @@
 
 # TODO
 * Figure out keeping disk not bloated (i.e. old generations, removed packages, etc.)
+* Better way of managing common config
