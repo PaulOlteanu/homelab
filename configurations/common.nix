@@ -1,4 +1,4 @@
-{}: {
+{...}: {
   config = {
     users.users.nixos.openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINa4WrJTh45V4PfRjp5bhWP5L8i9E7TeISs6iNtEzid4"
