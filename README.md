@@ -1,7 +1,14 @@
-`nix build .#proxmox-img` to create a proxmox backup file. This is then restored in proxmox and turned into a template
+`nix build .#proxmox-img` to create a proxmox backup file. This is then restored in proxmox and turned into a template.
 
-`nixos-rebuild switch --flake .#nixos-n --target-host nixos-n --use-remote-sudo` to update the config for `nixos-n` (after setting up the correct .ssh/config entry). Eventually this should be `deploy-rs` or `comin`.
+`deploy` to deploy the configurations to the nodes (or `deploy --targets .#nixos-[1,2,3]` to deploy a specific config).
+
+# configurations/
+* `base.nix`: the base configuration used in the `proxmox-img` ourput.
+* `common.nix`: shared configuration for all nodes. Currently just all my ssh public keys.
+* `nixos-[1,2,3]`: nodes running k3s. `nixos-1` is the master (`cluster-init` enabled). All 3 are running as k3s `server`s, so they all run control-plane components.
+* `k3s.nix`: a nixos module for enabling k3s on a node. This will open some ports on the node and run k3s with traefik and servicelb disabled.
 
 # TODO
-* Figure out keeping disk not bloated (i.e. old generations, removed packages, etc.)
-* Better way of managing common config
+* Figure out keeping disk not bloated (i.e. old generations, removed packages, etc.).
+* Way to manage k3s secrets from here instead of sshing into nodes.
+* Dedupe everything in `flake.nix` - it's actually all identical except for `nixos-[1,2,3]`.
