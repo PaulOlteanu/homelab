@@ -9,6 +9,6 @@
 * `k3s.nix`: a nixos module for enabling k3s on a node. This will open some ports on the node and run k3s with traefik and servicelb disabled.
 
 # TODO
-* Figure out keeping disk not bloated on nixos vms (i.e. old generations, removed packages, etc.).
 * Way to manage k3s secrets from here instead of sshing into nodes.
+* Way to make longhorn configuration less manual
 * Exposing grafana to home subnet
