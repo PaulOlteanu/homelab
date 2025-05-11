@@ -16,7 +16,9 @@
     ...
   }: let
     system = "x86_64-linux";
+
     pkgs = import nixpkgs {inherit system;};
+
     deployPkgs = import nixpkgs {
       inherit system;
       overlays = [
@@ -29,6 +31,27 @@
         })
       ];
     };
+
+    system-names = ["nixos-1" "nixos-2" "nixos-3"];
+
+    mkSystem = name:
+      nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./configurations/base.nix
+          ./configurations/common.nix
+          ./configurations/${name}.nix
+        ];
+      };
+
+    mkDeploy = name: {
+      hostname = name;
+      profiles.system = {
+        user = "root";
+        sshUser = "nixos";
+        path = deployPkgs.deploy-rs.lib.activate.nixos self.nixosConfigurations.${name};
+      };
+    };
   in {
     packages.x86_64-linux = {
       proxmox-img = nixos-generators.nixosGenerate {
@@ -40,58 +63,8 @@
       };
     };
 
-    # TODO: How do I dedupe this stuff
-    nixosConfigurations.nixos-1 = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./configurations/base.nix
-        ./configurations/common.nix
-        ./configurations/nixos-1.nix
-      ];
-    };
-
-    nixosConfigurations.nixos-2 = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./configurations/base.nix
-        ./configurations/common.nix
-        ./configurations/nixos-2.nix
-      ];
-    };
-
-    nixosConfigurations.nixos-3 = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./configurations/base.nix
-        ./configurations/common.nix
-        ./configurations/nixos-3.nix
-      ];
-    };
-
-    deploy.nodes.nixos-1 = {
-      hostname = "nixos-1";
-      profiles.system = {
-        user = "root";
-        sshUser = "nixos";
-        path = deployPkgs.deploy-rs.lib.activate.nixos self.nixosConfigurations.nixos-1;
-      };
-    };
-    deploy.nodes.nixos-2 = {
-      hostname = "nixos-2";
-      profiles.system = {
-        user = "root";
-        sshUser = "nixos";
-        path = deployPkgs.deploy-rs.lib.activate.nixos self.nixosConfigurations.nixos-2;
-      };
-    };
-    deploy.nodes.nixos-3 = {
-      hostname = "nixos-3";
-      profiles.system = {
-        user = "root";
-        sshUser = "nixos";
-        path = deployPkgs.deploy-rs.lib.activate.nixos self.nixosConfigurations.nixos-3;
-      };
-    };
+    nixosConfigurations = nixpkgs.lib.genAttrs system-names mkSystem;
+    deploy.nodes = nixpkgs.lib.genAttrs system-names mkDeploy;
 
     checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
   };

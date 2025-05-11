@@ -11,6 +11,4 @@
 # TODO
 * Figure out keeping disk not bloated on nixos vms (i.e. old generations, removed packages, etc.).
 * Way to manage k3s secrets from here instead of sshing into nodes.
-* Dedupe everything in `flake.nix` - it's actually all identical except for `nixos-[1,2,3]`.
-* Node exporter from nixos-[1,2] (probably just opening ports)
 * Exposing grafana to home subnet

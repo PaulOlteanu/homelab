@@ -1,8 +1,5 @@
 prometheus:
   prometheusSpec:
-    nodeSelector:
-      kubernetes.io/hostname: nixos-3
-
     podMonitorSelectorNilUsesHelmValues: false
     serviceMonitorSelectorNilUsesHelmValues: false
 
@@ -12,7 +9,7 @@ prometheus:
     storageSpec:
       volumeClaimTemplate:
         spec:
-          storageClassName: local-storage
+          storageClassName: longhorn
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
@@ -20,11 +17,9 @@ prometheus:
 
 grafana:
   enabled: true
-  nodeSelector:
-    kubernetes.io/hostname: nixos-3
   persistence:
     enabled: true
-    storageClassName: local-storage
+    storageClassName: longhorn
     accessModes: ["ReadWriteOnce"]
     size: 5Gi
 

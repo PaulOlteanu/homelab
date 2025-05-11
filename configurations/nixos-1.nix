@@ -5,5 +5,6 @@
 
     k3s.enable = true;
     k3s.cluster-init = true;
+    k3s.enable-longhorn = true;
   };
 }

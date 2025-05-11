@@ -1,0 +1,6 @@
+defaultSettings:
+  replicaCount: 2
+  allowVolumeExpansion: true
+  nodeDownSoftToleration: 3m
+  nodeDownPodDeletionPolicy: do-nothing
+  telemetryEnabled: false
