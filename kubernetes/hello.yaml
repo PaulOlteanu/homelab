@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello
+  labels:
+    app: hello
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+      - name: hello
+        image: ocir.ca-toronto-1.oci.oraclecloud.com/yzwl2hjkdzm1/hello:latest
+        ports:
+        - containerPort: 3000
+          name: web
+        - containerPort: 6666
+          name: metrics
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-web
+  namespace: default
+  labels:
+    app: hello
+spec:
+  selector:
+    app: hello
+  type: LoadBalancer
+  loadBalancerIP: 192.168.0.10
+  ports:
+    - port: 80          # External port
+      targetPort: 3000  # Pod/container port

@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+
+metadata:
+  name: hello-monitor
+  labels:
+    app: hello
+    release: kube-prometheus
+
+spec:
+  namespaceSelector:
+    matchNames:
+      - default
+
+  selector:
+    matchLabels:
+      app: hello
+
+  podMetricsEndpoints:
+  - portNumber: 6666
+    interval: 15s
