@@ -75,6 +75,11 @@ in {
             serverAddr = "https://${cfg.server-ip}:6443";
           })
       ];
+
+      services.avahi.enable = true;
+      services.avahi.openFirewall = true;
+      services.avahi.publish.addresses = true;
+      services.avahi.nssmdns = true;
     }
 
     (mkIf cfg.enable-longhorn {

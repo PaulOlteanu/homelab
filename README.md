@@ -11,4 +11,3 @@
 # TODO
 * Way to manage k3s secrets from here instead of sshing into nodes.
 * Way to make longhorn configuration less manual
-* Exposing grafana to home subnet

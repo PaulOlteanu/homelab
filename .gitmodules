@@ -1,0 +1,3 @@
+[submodule "kubernetes/external-mdns"]
+	path = kubernetes/external-mdns
+	url = git@github.com:blake/external-mdns.git
