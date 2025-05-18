@@ -9,5 +9,7 @@
 * `k3s.nix`: a nixos module for enabling k3s on a node. This will open some ports on the node and run k3s with traefik and servicelb disabled.
 
 # TODO
-* Way to manage k3s secrets from here instead of sshing into nodes.
-* Way to make longhorn configuration less manual
+* Move metallb to helm
+* Way to manage kubernetes secrets (maybe bitwarden)
+* Way to manage secrets on k3s nodes from here instead of sshing into nodes.
+* Way to make longhorn configuration less manual (dunno if possible)
