@@ -9,5 +9,8 @@ dependencies:
 - name: longhorn
   repository: https://charts.longhorn.io
   version: 1.8.1
-digest: sha256:fbb59a48a3040b5b5dae5e5d4ed4dc3e81b487bedf7b4b7a2a13dfc3d55aa07e
-generated: '2025-05-18T15:43:25.674893588-04:00'
+- name: metallb
+  repository: https://metallb.github.io/metallb
+  version: 0.14.9
+digest: sha256:ec797d8b8ed3672e2e13f9b1056a3e2e6eff4923d75a9608e49b452904dd11df
+generated: '2025-05-18T17:44:41.987505329-04:00'

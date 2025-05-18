@@ -7,6 +7,10 @@ repositories:
 
   - name: ingress-nginx
     url: https://kubernetes.github.io/ingress-nginx
+
+  - name: metallb
+    url: https://metallb.github.io/metallb
+
 releases:
   - name: kube-prometheus
     chart: prometheus-community/kube-prometheus-stack
@@ -28,3 +32,8 @@ releases:
     createNamespace: true
     values:
       - ingress-nginx.yaml
+
+  - name: metallb
+    chart: metallb/metallb
+    namespace: metallb-system
+    createNamespace: true
