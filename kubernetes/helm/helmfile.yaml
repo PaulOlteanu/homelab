@@ -11,6 +11,9 @@ repositories:
   - name: metallb
     url: https://metallb.github.io/metallb
 
+  - name: victoriametrics
+    url: https://victoriametrics.github.io/helm-charts
+
 releases:
   - name: kube-prometheus
     chart: prometheus-community/kube-prometheus-stack
@@ -37,3 +40,10 @@ releases:
     chart: metallb/metallb
     namespace: metallb-system
     createNamespace: true
+
+  - name: victorialogs
+    chart: victoriametrics/victoria-logs-single
+    namespace: monitoring
+    createNamespace: true
+    values:
+      - victorialogs.yaml
