@@ -12,8 +12,11 @@ dependencies:
 - name: metallb
   repository: https://metallb.github.io/metallb
   version: 0.14.9
+- name: tempo
+  repository: https://grafana.github.io/helm-charts
+  version: 1.21.1
 - name: victoria-logs-single
   repository: https://victoriametrics.github.io/helm-charts
   version: 0.9.8
-digest: sha256:ee1107edb7c33840bb06c86292c22276f0dd7d2551343f30c4fb3276a10e6cf4
-generated: '2025-05-20T02:27:16.695673592-04:00'
+digest: sha256:3e6cd76e80242cfb7d97f9823f66908ab095ab76177a6639e964ef1ee14e516c
+generated: '2025-05-20T14:12:29.72312-04:00'
