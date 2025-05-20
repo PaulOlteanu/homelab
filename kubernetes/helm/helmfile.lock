@@ -5,18 +5,21 @@ dependencies:
   version: 4.12.2
 - name: kube-prometheus-stack
   repository: https://prometheus-community.github.io/helm-charts
-  version: 72.5.1
+  version: 72.5.2
 - name: longhorn
   repository: https://charts.longhorn.io
   version: 1.8.1
 - name: metallb
   repository: https://metallb.github.io/metallb
   version: 0.14.9
+- name: pyroscope
+  repository: https://grafana.github.io/helm-charts
+  version: 1.13.4
 - name: tempo
   repository: https://grafana.github.io/helm-charts
   version: 1.21.1
 - name: victoria-logs-single
   repository: https://victoriametrics.github.io/helm-charts
   version: 0.9.8
-digest: sha256:3e6cd76e80242cfb7d97f9823f66908ab095ab76177a6639e964ef1ee14e516c
-generated: '2025-05-20T14:12:29.72312-04:00'
+digest: sha256:5589116a71a03d4538062bfd0447f4e5c7396349577401dd25559ebd2eec2ad8
+generated: '2025-05-20T16:31:02.791884676-04:00'
