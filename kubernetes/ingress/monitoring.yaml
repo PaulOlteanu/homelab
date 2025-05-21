@@ -16,3 +16,14 @@ spec:
                 name: kube-prometheus-grafana
                 port:
                   number: 80
+
+    - host: victoria-logs.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: victorialogs-victoria-logs-single-server
+                port:
+                  number: 9428
