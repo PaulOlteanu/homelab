@@ -2,9 +2,6 @@ repositories:
   - name: grafana
     url: https://grafana.github.io/helm-charts
 
-  - name: prometheus-community
-    url: https://prometheus-community.github.io/helm-charts
-
   - name: longhorn
     url: https://charts.longhorn.io
 
@@ -18,13 +15,6 @@ repositories:
     url: https://victoriametrics.github.io/helm-charts
 
 releases:
-  - name: kube-prometheus
-    chart: prometheus-community/kube-prometheus-stack
-    namespace: monitoring
-    createNamespace: true
-    values:
-      - kube-prometheus-stack.yaml
-
   - name: longhorn
     chart: longhorn/longhorn
     namespace: longhorn-system
@@ -43,6 +33,13 @@ releases:
     chart: metallb/metallb
     namespace: metallb-system
     createNamespace: true
+
+  - name: vmks
+    chart: victoriametrics/victoria-metrics-k8s-stack
+    namespace: monitoring
+    createNamespace: true
+    values:
+      - victoria-metrics-k8s-stack.yaml
 
   - name: victorialogs
     chart: victoriametrics/victoria-logs-single

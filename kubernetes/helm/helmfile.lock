@@ -2,24 +2,24 @@ version: v1.0.0
 dependencies:
 - name: ingress-nginx
   repository: https://kubernetes.github.io/ingress-nginx
-  version: 4.12.2
-- name: kube-prometheus-stack
-  repository: https://prometheus-community.github.io/helm-charts
-  version: 72.5.2
+  version: 4.12.3
 - name: longhorn
   repository: https://charts.longhorn.io
-  version: 1.8.1
+  version: 1.9.0
 - name: metallb
   repository: https://metallb.github.io/metallb
-  version: 0.14.9
+  version: 0.15.2
 - name: pyroscope
   repository: https://grafana.github.io/helm-charts
   version: 1.13.4
 - name: tempo
   repository: https://grafana.github.io/helm-charts
-  version: 1.21.1
+  version: 1.23.1
 - name: victoria-logs-single
   repository: https://victoriametrics.github.io/helm-charts
-  version: 0.9.8
-digest: sha256:5589116a71a03d4538062bfd0447f4e5c7396349577401dd25559ebd2eec2ad8
-generated: '2025-05-20T16:31:02.791884676-04:00'
+  version: 0.11.2
+- name: victoria-metrics-k8s-stack
+  repository: https://victoriametrics.github.io/helm-charts
+  version: 0.52.0
+digest: sha256:4f1bad5b529238139d998bbf9fd05686d632253f2a6b9b4cd914c1140b4cf12c
+generated: '2025-06-15T14:35:00.317810833-04:00'

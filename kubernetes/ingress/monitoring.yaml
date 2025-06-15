@@ -13,7 +13,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: kube-prometheus-grafana
+                name: vmks-grafana
                 port:
                   number: 80
 
