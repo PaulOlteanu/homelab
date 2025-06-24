@@ -8,7 +8,7 @@ data:
   mosquitto.conf: |
     listener 1883
     allow_anonymous true
-    persistence true
+    persistence false
     log_dest stdout
 ---
 apiVersion: apps/v1
